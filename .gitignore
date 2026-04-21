@@ -1,0 +1,23 @@
+.env
+.env.*
+!.env.example
+
+# Runtime data (bind mounts)
+data/
+backups/
+
+# Traefik cert store (must be chmod 600 on server)
+**/acme.json
+
+# Mosquitto credentials
+**/pwfile
+!mosquitto/config/pwfile
+
+# Traefik basic auth users file
+traefik/auth/users
+
+# Local generated install summary with credentials
+INSTALL_SUMMARY.txt
+
+# Backups
+*.tgz

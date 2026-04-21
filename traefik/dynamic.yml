@@ -1,0 +1,64 @@
+http:
+  routers:
+    traefik:
+      rule: Host(`traefik.example.duckdns.org`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: le
+      service: api@internal
+      middlewares: [traefik-auth]
+
+    nodered:
+      rule: Host(`nodered.example.duckdns.org`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: le
+      service: nodered
+      middlewares: [nodered-auth]
+
+    influxdb:
+      rule: Host(`influx.example.duckdns.org`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: le
+      service: influxdb
+
+    grafana:
+      rule: Host(`dash.example.duckdns.org`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: le
+      service: grafana
+
+    portainer:
+      rule: Host(`ops.example.duckdns.org`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: le
+      service: portainer
+
+  middlewares:
+    traefik-auth:
+      basicAuth:
+        usersFile: /auth/users
+    nodered-auth:
+      basicAuth:
+        usersFile: /auth/users
+
+  services:
+    nodered:
+      loadBalancer:
+        servers:
+          - url: http://node-red:1880
+    influxdb:
+      loadBalancer:
+        servers:
+          - url: http://influxdb:8086
+    grafana:
+      loadBalancer:
+        servers:
+          - url: http://grafana:3000
+    portainer:
+      loadBalancer:
+        servers:
+          - url: http://portainer:9000

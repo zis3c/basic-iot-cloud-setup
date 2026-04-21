@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Cloud Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-color: #f8fafc;
+            --accent-color: #38bdf8;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+            color: var(--text-color);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        p.subtitle {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h2 {
+            margin: 0.5rem 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        footer {
+            margin-top: 4rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IoT Cloud Hub</h1>
+        <p class="subtitle">Secure control center for your connected world</p>
+        
+        <div class="grid">
+            <a href="https://dash.{{DOMAIN}}" class="card">
+                <div class="icon">📊</div>
+                <h2>Grafana</h2>
+                <p>Data visualization & alerts</p>
+            </a>
+            
+            <a href="https://nodered.{{DOMAIN}}" class="card">
+                <div class="icon">🔄</div>
+                <h2>Node-RED</h2>
+                <p>Flow-based automation</p>
+            </a>
+            
+            <a href="https://influx.{{DOMAIN}}" class="card">
+                <div class="icon">🗄️</div>
+                <h2>InfluxDB</h2>
+                <p>Time-series database</p>
+            </a>
+            
+            <a href="https://ops.{{DOMAIN}}" class="card">
+                <div class="icon">🐳</div>
+                <h2>Portainer</h2>
+                <p>Container management</p>
+            </a>
+
+            <a href="https://traefik.{{DOMAIN}}" class="card">
+                <div class="icon">🚦</div>
+                <h2>Traefik</h2>
+                <p>Secure routing & traffic</p>
+            </a>
+
+            <a href="https://adminer.{{DOMAIN}}" class="card">
+                <div class="icon">🐘</div>
+                <h2>Adminer</h2>
+                <p>Database administration</p>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        Running on basic-iot-setup &bull; Built with Docker
+    </footer>
+</body>
+</html>
